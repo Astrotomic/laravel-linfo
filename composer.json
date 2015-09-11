@@ -1,0 +1,26 @@
+{
+  "name": "gummibeer/laravel-linfo",
+  "description": "This is a Laravel 5 Wrapper for the linfo package from jrgp",
+  "require": {
+    "php": ">=5.5.0",
+    "illuminate/support": "5.*",
+    "nesbot/carbon": "~1.19",
+    "linfo/linfo": "dev-master"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Tom Witkowski",
+      "email": "dev.gummibeer@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload":{
+    "psr-4": {
+      "Gummibeer\\Linfo\\": "src"
+    },
+    "files":[
+      "src/index.php"
+    ]
+  }
+}
