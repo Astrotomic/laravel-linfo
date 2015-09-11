@@ -13,6 +13,59 @@ class Model
     protected $dates = [];
     protected $casts = [];
 
+    /**
+     * SETTER
+     */
+    public function __set($key, $value)
+    {
+        $this->setAttribute($key, $value);
+    }
+
+    public function setAttribute($key, $value)
+    {
+        if ($this->hasSetMutator($key)) {
+            $method = 'set' . Str::studly($key) . 'Attribute';
+            return $this->{$method}($value);
+        } elseif (in_array($key, $this->dates) && $value) {
+            $value = $this->asDateTime($value);
+        }
+
+        if ($this->isJsonCastable($key) && !is_null($value)) {
+            $value = json_encode($value);
+        }
+
+        $this->attributes[$key] = $value;
+    }
+
+    public function hasSetMutator($key)
+    {
+        return method_exists($this, 'set' . Str::studly($key) . 'Attribute');
+    }
+
+    protected function isJsonCastable($key)
+    {
+        if ($this->hasCast($key)) {
+            return in_array(
+                $this->getCastType($key), ['array', 'json', 'object', 'collection'], true
+            );
+        }
+
+        return false;
+    }
+
+    protected function setAttributes(array $attributes)
+    {
+        foreach ($attributes as $key => $value) {
+            if (is_array($value)) {
+                $value = $this->slugArrayKeys($value);
+            }
+            $this->setAttribute(Str::slug($key, '_'), $value);
+        }
+    }
+
+    /**
+     * GETTER
+     */
     public function __get($key)
     {
         return $this->getAttribute($key);
@@ -135,6 +188,22 @@ class Model
             return Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
         }
 
-        return Carbon::createFromFormat($this->getDateFormat(), $value);
+        return new Carbon($value);
+    }
+
+    /**
+     * HELPERS
+     */
+    protected function slugArrayKeys(array $array)
+    {
+        $tmp = [];
+        foreach($array as $key => $value) {
+            if(is_array($value)) {
+                $tmp[Str::slug($key, '_')] = $this->slugArrayKeys($value);
+            } else {
+                $tmp[Str::slug($key, '_')] = $value;
+            }
+        }
+        return $tmp;
     }
 }
