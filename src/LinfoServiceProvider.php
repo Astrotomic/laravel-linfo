@@ -1,7 +1,9 @@
 <?php
 namespace Gummibeer\Linfo;
 
-class LinfoServiceProvider
+use Illuminate\Support\ServiceProvider;
+
+class LinfoServiceProvider extends ServiceProvider
 {
     public function register()
     {
