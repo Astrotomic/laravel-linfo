@@ -15,11 +15,11 @@
     }
   ],
   "minimum-stability": "dev",
-  "autoload":{
+  "autoload": {
     "psr-4": {
       "Gummibeer\\Linfo\\": "src"
     },
-    "files":[
+    "files": [
       "src/index.php"
     ]
   }
