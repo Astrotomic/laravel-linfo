@@ -15,6 +15,12 @@ This is a Laravel 5 Wrapper for the linfo package from jrgp - https://github.com
 }
 ```
 
-```Gummibeer\Linfo\LinfoServiceProvider::class,```
+```php
+Gummibeer\Linfo\LinfoServiceProvider::class,
+```
 
-```new \Gummibeer\Linfo\Models\Linfo()```
+```php
+new \Gummibeer\Linfo\Models\Linfo()
+```
+
+Pleas look at the demo site for examples, usage and installation instructions. - [http://linfo.gummibeer.de/](http://linfo.gummibeer.de/)

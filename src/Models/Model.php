@@ -3,12 +3,16 @@ namespace Gummibeer\Linfo\Models;
 
 use DateTime;
 use Carbon\Carbon;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Str;
 
 class Model
 {
     protected $originals = [];
     protected $attributes = [];
+
+    protected $hidden = [];
 
     protected $dates = [];
     protected $casts = [];

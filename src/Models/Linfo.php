@@ -1,10 +1,12 @@
 <?php
 namespace Gummibeer\Linfo\Models;
 
-use Carbon\Carbon;
+use Gummibeer\Linfo\Traits\LinfoProcessedTrait;
 
 class Linfo extends Model
 {
+    use LinfoProcessedTrait;
+
     protected $dates = [
         'timestamp',
     ];
@@ -16,14 +18,16 @@ class Linfo extends Model
             $linfo->scan();
             $this->originals = $linfo->getInfo();
             $this->setAttributes($this->originals);
+            $this->setProcesseds();
         } catch (\LinfoFatalException $e) {
             die($e->getMessage());
         }
     }
 
+    // Attribute Setter
     public function setUptimeAttribute($value)
     {
         $this->attributes['uptime'] = $value;
-        $this->attributes['uptime']['bootedtimestamp'] = Carbon::createFromTimestampUTC($value['bootedtimestamp']);
+        $this->attributes['uptime']['bootedtimestamp'] = $this->asDateTime($value['bootedtimestamp']);
     }
 }
