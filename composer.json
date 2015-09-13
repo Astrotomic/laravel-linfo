@@ -1,5 +1,5 @@
 {
-  "name": "gummibeer/laravel-linfo",
+  "name": "linfo/laravel",
   "description": "This is a Laravel 5 Wrapper for the linfo package from jrgp",
   "require": {
     "php": ">=5.5.0",
