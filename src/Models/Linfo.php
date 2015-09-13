@@ -23,7 +23,7 @@ class Linfo extends Model
 
     public function setUptimeAttribute($value)
     {
-        $value = trim(substr($value, strpos($value, 'booted') + 6));
-        $this->attributes['uptime'] = Carbon::createFromTimestampUTC($value);
+        $this->attributes['uptime'] = $value;
+        $this->attributes['uptime']['bootedtimestamp'] = Carbon::createFromTimestampUTC($value['bootedtimestamp']);
     }
 }

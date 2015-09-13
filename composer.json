@@ -18,9 +18,6 @@
   "autoload": {
     "psr-4": {
       "Gummibeer\\Linfo\\": "src"
-    },
-    "files": [
-      "src/index.php"
-    ]
+    }
   }
 }
