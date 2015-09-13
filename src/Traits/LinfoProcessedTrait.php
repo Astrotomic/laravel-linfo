@@ -86,6 +86,22 @@ trait LinfoProcessedTrait
         return $swap;
     }
 
+    public function setOsProcessed()
+    {
+        $os = [];
+        if(!empty(array_get($this->attributes, 'os'))) {
+            $os['type'] = $this->attributes['os'];
+        }
+        if(!empty(array_get($this->attributes, 'kernel'))) {
+            $os['kernel'] = $this->attributes['kernel'];
+        }
+        if(!empty(array_get($this->attributes, 'distro'))) {
+            $os['name'] = $this->attributes['distro']['name'];
+            $os['version'] = $this->attributes['distro']['version'];
+        }
+        return $os;
+    }
+
     // Processed Helper
     public function getProcesseds()
     {
