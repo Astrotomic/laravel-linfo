@@ -85,9 +85,9 @@ class Model implements Arrayable, Jsonable
         return $this->originals;
     }
 
-    public function getOriginal($key)
+    public function getOriginal($key, $default = null)
     {
-        return array_get($this->originals, $key);
+        return array_get($this->originals, $key, $default);
     }
 
     public function getAttributes()
@@ -95,16 +95,16 @@ class Model implements Arrayable, Jsonable
         return $this->attributes;
     }
 
-    public function getAttribute($key)
+    public function getAttribute($key, $default = null)
     {
         if (array_get($this->attributes, $key) != null || $this->hasGetMutator($key)) {
-            return $this->getAttributeValue($key);
+            return $this->getAttributeValue($key, $default);
         }
     }
 
-    public function getAttributeValue($key)
+    public function getAttributeValue($key, $default = null)
     {
-        $value = $this->getAttributeFromArray($key);
+        $value = $this->getAttributeFromArray($key, $default);
 
         if ($this->hasGetMutator($key)) {
             return $this->mutateAttribute($key, $value);
@@ -121,9 +121,9 @@ class Model implements Arrayable, Jsonable
         return $value;
     }
 
-    protected function getAttributeFromArray($key)
+    protected function getAttributeFromArray($key, $default = null)
     {
-        return array_get($this->attributes, $key);
+        return array_get($this->attributes, $key, $default);
     }
 
     protected function hasGetMutator($key)

@@ -108,9 +108,9 @@ trait LinfoProcessedTrait
         return $this->processeds;
     }
 
-    public function getProcessed($key)
+    public function getProcessed($key, $default = null)
     {
-        return array_get($this->processeds, $key);
+        return array_get($this->processeds, $key, $default);
     }
 
     public function setProcesseds()
