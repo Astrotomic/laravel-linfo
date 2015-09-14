@@ -12,7 +12,7 @@
   "provide": {
     "linfo/linfo": "dev-master"
   },
-  "license": "GPL",
+  "license": "GPL-3.0",
   "authors": [
     {
       "name": "Tom Witkowski",
