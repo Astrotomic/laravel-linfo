@@ -1,5 +1,5 @@
 <?php
-namespace Gummibeer\Linfo;
+namespace Linfo\Laravel;
 
 use Illuminate\Support\ServiceProvider;
 

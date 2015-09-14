@@ -1,7 +1,7 @@
 <?php
-namespace Gummibeer\Linfo\Models;
+namespace Linfo\Laravel\Models;
 
-use Gummibeer\Linfo\Traits\LinfoProcessedTrait;
+use Linfo\Laravel\Traits\LinfoProcessedTrait;
 
 class Linfo extends Model
 {

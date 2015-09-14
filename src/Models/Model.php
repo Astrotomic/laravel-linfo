@@ -1,5 +1,5 @@
 <?php
-namespace Gummibeer\Linfo\Models;
+namespace Linfo\Laravel\Models;
 
 use DateTime;
 use Carbon\Carbon;

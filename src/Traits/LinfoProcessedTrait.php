@@ -1,5 +1,5 @@
 <?php
-namespace Gummibeer\Linfo\Traits;
+namespace Linfo\Laravel\Traits;
 
 use Illuminate\Support\Str;
 

@@ -26,7 +26,7 @@
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
-      "Gummibeer\\Linfo\\": "src"
+      "Linfo\\Laravel\\": "src"
     }
   }
 }
