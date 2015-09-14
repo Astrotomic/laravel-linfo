@@ -87,9 +87,7 @@ class Model implements Arrayable, Jsonable
 
     public function getOriginal($key)
     {
-        if (array_key_exists($key, $this->originals)) {
-            return $this->originals[$key];
-        }
+        return array_get($this->originals, $key);
     }
 
     public function getAttributes()
@@ -99,7 +97,7 @@ class Model implements Arrayable, Jsonable
 
     public function getAttribute($key)
     {
-        if (array_key_exists($key, $this->attributes) || $this->hasGetMutator($key)) {
+        if (array_get($this->attributes, $key) != null || $this->hasGetMutator($key)) {
             return $this->getAttributeValue($key);
         }
     }
@@ -125,9 +123,7 @@ class Model implements Arrayable, Jsonable
 
     protected function getAttributeFromArray($key)
     {
-        if (array_key_exists($key, $this->attributes)) {
-            return $this->attributes[$key];
-        }
+        return array_get($this->attributes, $key);
     }
 
     protected function hasGetMutator($key)

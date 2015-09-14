@@ -110,9 +110,7 @@ trait LinfoProcessedTrait
 
     public function getProcessed($key)
     {
-        if (array_key_exists($key, $this->processeds)) {
-            return $this->processeds[$key];
-        }
+        return array_get($this->processeds, $key);
     }
 
     public function setProcesseds()
