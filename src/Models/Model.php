@@ -3,9 +3,11 @@ namespace Linfo\Laravel\Models;
 
 use DateTime;
 use Carbon\Carbon;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Str;
 
-class Model
+class Model implements Arrayable, Jsonable
 {
     protected $originals = [];
     protected $attributes = [];
@@ -204,13 +206,23 @@ class Model
     protected function slugArrayKeys(array $array)
     {
         $tmp = [];
-        foreach($array as $key => $value) {
-            if(is_array($value)) {
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
                 $tmp[Str::slug($key, '_')] = $this->slugArrayKeys($value);
             } else {
                 $tmp[Str::slug($key, '_')] = $value;
             }
         }
         return $tmp;
+    }
+
+    public function toArray()
+    {
+        return json_decode($this->toJson(), true);
+    }
+
+    public function toJson($options = 0)
+    {
+        return json_encode(array_diff_key($this->attributes, array_flip($this->hidden)));
     }
 }

@@ -1,10 +1,5 @@
 <?php
 return [
-    // custom Laravel package
-    'package' => [
-        'timezone' => 'Europe/Berlin',
-    ],
-
     // original linfo package
     'source' => [
         'byte_notation' => 1024,
