@@ -7,13 +7,22 @@
     "nesbot/carbon": "~1.19",
     "linfo/linfo": "dev-master"
   },
-  "license": "MIT",
+  "provide": [
+    "linfo/linfo"
+  ],
+  "license": "GPL",
   "authors": [
     {
       "name": "Tom Witkowski",
       "email": "dev.gummibeer@gmail.com"
     }
   ],
+  "support": {
+    "email": "dev.gummibeer@gmail.com",
+    "docs": "http://linfo.gummibeer.de",
+    "issues": "https://github.com/Gummibeer/laravel-linfo/issues",
+    "source": "https://github.com/Gummibeer/laravel-linfo"
+  },
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
