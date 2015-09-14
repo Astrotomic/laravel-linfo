@@ -7,9 +7,9 @@
     "nesbot/carbon": "~1.19",
     "linfo/linfo": "dev-master"
   },
-  "provide": [
-    "linfo/linfo"
-  ],
+  "provide": {
+    "linfo/linfo": "dev-master"
+  },
   "license": "GPL",
   "authors": [
     {
