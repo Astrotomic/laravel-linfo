@@ -19,4 +19,4 @@ Linfo\Laravel\LinfoServiceProvider::class,
 new \Linfo\Laravel\Models\Linfo()
 ```
 
-Pleas look at the demo site for examples, usage and installation instructions. - [http://linfo.gummibeer.de/](http://linfo.gummibeer.de/)
+Please look at the demo site for examples, usage and installation instructions. - [http://linfo.gummibeer.de](http://linfo.gummibeer.de)
