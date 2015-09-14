@@ -67,6 +67,11 @@ class Model
         }
     }
 
+    protected function setOriginals(array $attributes)
+    {
+        $this->originals = $attributes;
+    }
+
     /**
      * GETTER
      */

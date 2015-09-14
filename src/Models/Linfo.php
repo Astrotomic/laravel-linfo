@@ -16,12 +16,17 @@ class Linfo extends Model
         try {
             $linfo = new \Linfo(config('linfo.source'));
             $linfo->scan();
-            $this->originals = $linfo->getInfo();
-            $this->setAttributes($this->originals);
-            $this->setProcesseds();
+            $this->setup($linfo->getInfo());
         } catch (\LinfoFatalException $e) {
             die($e->getMessage());
         }
+    }
+
+    protected function setup(array $attributes)
+    {
+        $this->setOriginals($attributes);
+        $this->setAttributes($this->originals);
+        $this->setProcesseds();
     }
 
     // Attribute Setter
