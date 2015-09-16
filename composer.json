@@ -7,10 +7,10 @@
     "php": ">=5.5.0",
     "illuminate/support": "5.*",
     "nesbot/carbon": "~1.19",
-    "linfo/linfo": "dev-master"
+    "linfo/linfo": "~2.0.3"
   },
   "provide": {
-    "linfo/linfo": "dev-master"
+    "linfo/linfo": "~2.0.3"
   },
   "license": "GPL-3.0",
   "authors": [
@@ -27,7 +27,6 @@
     "issues": "https://github.com/Gummibeer/laravel-linfo/issues",
     "source": "https://github.com/Gummibeer/laravel-linfo"
   },
-  "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
       "Linfo\\Laravel\\": "src"
