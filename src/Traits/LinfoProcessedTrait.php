@@ -1,5 +1,5 @@
 <?php
-namespace Gummibeer\Linfo\Traits;
+namespace Linfo\Laravel\Traits;
 
 use Illuminate\Support\Str;
 
@@ -41,9 +41,9 @@ trait LinfoProcessedTrait
             $cpu['vendor'] = $orgCPU[0]['vendor'];
             $cpu['model'] = str_ireplace('(R)', '&reg;', preg_replace('/[\s]{2,}/', ' ', $orgCPU[0]['model']));
             $cpu['mhz'] = $orgCPU[0]['mhz'] * 1;
-            $cpu['ghz'] = $cpu['mhz'] / 1000;
+            $cpu['ghz'] = $this->division($cpu['mhz'], 1000);
             $cpu['cores'] = count($orgCPU);
-            $cpu['usage_percentage'] = ceil(array_sum($usage_percentage) / count($usage_percentage)) ?: 1;
+            $cpu['usage_percentage'] = ceil($this->division(array_sum($usage_percentage), count($usage_percentage))) ?: 1;
         }
         if(!empty(array_get($this->attributes, 'cpuarchitecture'))) {
             $cpu['architecture'] = array_get($this->attributes, 'cpuarchitecture');
@@ -56,14 +56,14 @@ trait LinfoProcessedTrait
         $ram = [];
         if(!empty(array_get($this->attributes, 'ram'))) {
             $orgRAM = array_get($this->attributes, 'ram');
-            $ram['type'] = strtolower($orgRAM['type']);
-            $ram['total'] = $orgRAM['total'];
+            $ram['type'] = strtolower(array_get($orgRAM, 'type'));
+            $ram['total'] = array_get($orgRAM, 'total', 0);
             $ram['total_gb'] = $this->b2Gb($ram['total']);
-            $ram['free'] = $orgRAM['free'];
+            $ram['free'] = array_get($orgRAM, 'free', 0);
             $ram['free_gb'] = $this->b2Gb($ram['free']);
             $ram['blocked'] = $orgRAM['total'] - $orgRAM['free'];
             $ram['blocked_gb'] = $this->b2Gb($ram['blocked']);
-            $ram['usage_percentage'] = $ram['blocked'] / $ram['total'] * 100;
+            $ram['usage_percentage'] = $this->division($ram['blocked'], $ram['total']) * 100;
         }
         return $ram;
     }
@@ -73,15 +73,15 @@ trait LinfoProcessedTrait
         $swap = [];
         if(!empty(array_get($this->attributes, 'ram'))) {
             $orgRAM = array_get($this->attributes, 'ram');
-            $swap['total'] = $orgRAM['swaptotal'];
+            $swap['total'] = array_get($orgRAM, 'swaptotal', 0);
             $swap['total_gb'] = $this->b2Gb($swap['total']);
-            $swap['free'] = $orgRAM['swapfree'];
+            $swap['free'] = array_get($orgRAM, 'swapfree', 0);
             $swap['free_gb'] = $this->b2Gb($swap['free']);
             $swap['blocked'] = $swap['total'] - $swap['free'];
             $swap['blocked_gb'] = $this->b2Gb($swap['blocked']);
-            $swap['cached'] = $orgRAM['swapcached'];
+            $swap['cached'] = array_get($orgRAM, 'swapcached', 0);
             $swap['cached_gb'] = $this->b2Gb($swap['cached']);
-            $swap['usage_percentage'] = $swap['blocked'] / $swap['total'] * 100;
+            $swap['usage_percentage'] = $this->division($swap['blocked'], $swap['total']) * 100;
         }
         return $swap;
     }
@@ -108,11 +108,9 @@ trait LinfoProcessedTrait
         return $this->processeds;
     }
 
-    public function getProcessed($key)
+    public function getProcessed($key, $default = null)
     {
-        if (array_key_exists($key, $this->processeds)) {
-            return $this->processeds[$key];
-        }
+        return array_get($this->processeds, $key, $default);
     }
 
     public function setProcesseds()
@@ -130,5 +128,11 @@ trait LinfoProcessedTrait
     protected function b2Gb($byte)
     {
         return $byte / 1024 / 1024 / 1024;
+    }
+
+    protected function division($a, $b) {
+        if($b == 0) return null;
+
+        return $a / $b;
     }
 }
