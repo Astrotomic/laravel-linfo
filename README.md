@@ -5,22 +5,18 @@ This is a Laravel 5 Wrapper for the linfo package from jrgp - https://github.com
 {
     "require": {
         "linfo/laravel": "dev-master"
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Gummibeer/laravel-linfo"
-        }
-    ]
+    }
 }
 ```
 
+or run `composer require linfo\laravel`
+
 ```php
-Gummibeer\Linfo\LinfoServiceProvider::class,
+Linfo\Laravel\LinfoServiceProvider::class,
 ```
 
 ```php
-new \Gummibeer\Linfo\Models\Linfo()
+new \Linfo\Laravel\Models\Linfo()
 ```
 
-Pleas look at the demo site for examples, usage and installation instructions. - [http://linfo.gummibeer.de/](http://linfo.gummibeer.de/)
+Please look at the demo site for examples, usage and installation instructions. - [http://linfo.gummibeer.de](http://linfo.gummibeer.de)

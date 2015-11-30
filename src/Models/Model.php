@@ -1,5 +1,5 @@
 <?php
-namespace Gummibeer\Linfo\Models;
+namespace Linfo\Laravel\Models;
 
 use DateTime;
 use Carbon\Carbon;
@@ -7,7 +7,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Str;
 
-class Model
+class Model implements Arrayable, Jsonable
 {
     protected $originals = [];
     protected $attributes = [];
@@ -67,6 +67,11 @@ class Model
         }
     }
 
+    protected function setOriginals(array $attributes)
+    {
+        $this->originals = $attributes;
+    }
+
     /**
      * GETTER
      */
@@ -80,11 +85,9 @@ class Model
         return $this->originals;
     }
 
-    public function getOriginal($key)
+    public function getOriginal($key, $default = null)
     {
-        if (array_key_exists($key, $this->originals)) {
-            return $this->originals[$key];
-        }
+        return array_get($this->originals, $key, $default);
     }
 
     public function getAttributes()
@@ -92,16 +95,16 @@ class Model
         return $this->attributes;
     }
 
-    public function getAttribute($key)
+    public function getAttribute($key, $default = null)
     {
-        if (array_key_exists($key, $this->attributes) || $this->hasGetMutator($key)) {
-            return $this->getAttributeValue($key);
+        if (array_get($this->attributes, $key) != null || $this->hasGetMutator($key)) {
+            return $this->getAttributeValue($key, $default);
         }
     }
 
-    public function getAttributeValue($key)
+    public function getAttributeValue($key, $default = null)
     {
-        $value = $this->getAttributeFromArray($key);
+        $value = $this->getAttributeFromArray($key, $default);
 
         if ($this->hasGetMutator($key)) {
             return $this->mutateAttribute($key, $value);
@@ -118,11 +121,9 @@ class Model
         return $value;
     }
 
-    protected function getAttributeFromArray($key)
+    protected function getAttributeFromArray($key, $default = null)
     {
-        if (array_key_exists($key, $this->attributes)) {
-            return $this->attributes[$key];
-        }
+        return array_get($this->attributes, $key, $default);
     }
 
     protected function hasGetMutator($key)
@@ -201,13 +202,23 @@ class Model
     protected function slugArrayKeys(array $array)
     {
         $tmp = [];
-        foreach($array as $key => $value) {
-            if(is_array($value)) {
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
                 $tmp[Str::slug($key, '_')] = $this->slugArrayKeys($value);
             } else {
                 $tmp[Str::slug($key, '_')] = $value;
             }
         }
         return $tmp;
+    }
+
+    public function toArray()
+    {
+        return json_decode($this->toJson(), true);
+    }
+
+    public function toJson($options = 0)
+    {
+        return json_encode(array_diff_key($this->attributes, array_flip($this->hidden)));
     }
 }

@@ -1,23 +1,35 @@
 {
   "name": "linfo/laravel",
   "description": "This is a Laravel 5 Wrapper for the linfo package from jrgp",
+  "keywords": ["laravel","health","system","load"],
+  "homepage": "http://linfo.gummibeer.de",
   "require": {
     "php": ">=5.5.0",
     "illuminate/support": "5.*",
     "nesbot/carbon": "~1.19",
-    "linfo/linfo": "dev-master"
+    "linfo/linfo": "~2.0.3"
   },
-  "license": "MIT",
+  "provide": {
+    "linfo/linfo": "~2.0.3"
+  },
+  "license": "GPL-3.0",
   "authors": [
     {
       "name": "Tom Witkowski",
-      "email": "dev.gummibeer@gmail.com"
+      "email": "dev.gummibeer@gmail.com",
+      "homepage": "https://github.com/Gummibeer",
+      "role": "Developer"
     }
   ],
-  "minimum-stability": "dev",
+  "support": {
+    "email": "dev.gummibeer@gmail.com",
+    "docs": "http://linfo.gummibeer.de",
+    "issues": "https://github.com/Gummibeer/laravel-linfo/issues",
+    "source": "https://github.com/Gummibeer/laravel-linfo"
+  },
   "autoload": {
     "psr-4": {
-      "Gummibeer\\Linfo\\": "src"
+      "Linfo\\Laravel\\": "src"
     }
   }
 }
