@@ -32,7 +32,15 @@ class Linfo extends Model
     // Attribute Setter
     public function setUptimeAttribute($value)
     {
-        $this->attributes['uptime'] = $value;
-        $this->attributes['uptime']['bootedtimestamp'] = $this->asDateTime($value['bootedtimestamp']);
+        if (is_array($value)) {
+            $this->attributes['uptime'] = $value;
+            $this->attributes['uptime']['bootedtimestamp'] = $this->asDateTime($value['bootedtimestamp']);
+        } else {
+            $valArray = explode(';', $value);
+            $uptime = trim($valArray[0]);
+            $bootedtime = trim(explode(' ', trim($valArray[1]))[1]);
+            $this->attributes['uptime']['text'] = $uptime;
+            $this->attributes['uptime']['bootedtimestamp'] = $this->asDateTime($bootedtime);
+        }
     }
 }
