@@ -18,5 +18,3 @@ Linfo\Laravel\LinfoServiceProvider::class,
 ```php
 new \Linfo\Laravel\Models\Linfo()
 ```
-
-Please look at the demo site for examples, usage and installation instructions. - [http://linfo.gummibeer.de](http://linfo.gummibeer.de)
