@@ -4,25 +4,36 @@ namespace Linfo\Laravel\Models;
 
 use Linfo\Laravel\Traits\LinfoProcessedTrait;
 
+/**
+ * Class Linfo
+ * @package Linfo\Laravel\Models
+ */
 class Linfo extends Model
 {
     use LinfoProcessedTrait;
 
+    /**
+     * @var array
+     */
     protected $dates = [
         'timestamp',
     ];
 
+    /**
+     * Linfo constructor.
+     *
+     * @throws \LinfoFatalException
+     */
     public function __construct()
     {
-        try {
-            $linfo = new \Linfo(config('linfo.source'));
-            $linfo->scan();
-            $this->setup($linfo->getInfo());
-        } catch (\LinfoFatalException $e) {
-            die($e->getMessage());
-        }
+        $linfo = new \Linfo(config('linfo.source'));
+        $linfo->scan();
+        $this->setup($linfo->getInfo());
     }
 
+    /**
+     * @param array $attributes
+     */
     protected function setup(array $attributes)
     {
         $this->setOriginals($attributes);
@@ -30,7 +41,9 @@ class Linfo extends Model
         $this->setProcesseds();
     }
 
-    // Attribute Setter
+    /**
+     * @param array|string $value
+     */
     public function setUptimeAttribute($value)
     {
         if (is_array($value)) {

@@ -38,13 +38,13 @@ trait LinfoProcessedTrait
         $cpu = [];
         if (! empty(array_get($this->attributes, 'cpu'))) {
             $orgCPU = array_get($this->attributes, 'cpu');
-            $usage_percentage = array_column($orgCPU, 'usage_percentage');
+            $usagePercentage = array_column($orgCPU, 'usage_percentage');
             $cpu['vendor'] = $orgCPU[0]['vendor'];
             $cpu['model'] = str_ireplace('(R)', '&reg;', preg_replace('/[\s]{2,}/', ' ', $orgCPU[0]['model']));
             $cpu['mhz'] = $orgCPU[0]['mhz'] * 1;
             $cpu['ghz'] = $this->division($cpu['mhz'], 1000);
             $cpu['cores'] = count($orgCPU);
-            $cpu['usage_percentage'] = ceil($this->division(array_sum($usage_percentage), count($usage_percentage))) ?: 1;
+            $cpu['usage_percentage'] = ceil($this->division(array_sum($usagePercentage), count($usagePercentage))) ?: 1;
         }
         if (! empty(array_get($this->attributes, 'cpuarchitecture'))) {
             $cpu['architecture'] = array_get($this->attributes, 'cpuarchitecture');
@@ -135,12 +135,12 @@ trait LinfoProcessedTrait
         return $byte / 1024 / 1024 / 1024;
     }
 
-    protected function division($a, $b)
+    protected function division($dividend, $divisor)
     {
-        if ($b == 0) {
-            return;
+        if ($divisor == 0) {
+            return null;
         }
 
-        return $a / $b;
+        return $dividend / $divisor;
     }
 }

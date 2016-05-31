@@ -8,24 +8,49 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Str;
 
+/**
+ * Class Model
+ * @package Linfo\Laravel\Models
+ */
 class Model implements Arrayable, Jsonable
 {
+    /**
+     * @var array
+     */
     protected $originals = [];
+    /**
+     * @var array
+     */
     protected $attributes = [];
 
+    /**
+     * @var array
+     */
     protected $hidden = [];
 
+    /**
+     * @var array
+     */
     protected $dates = [];
+    /**
+     * @var array
+     */
     protected $casts = [];
 
     /**
-     * SETTER.
+     * @param $key
+     * @param $value
      */
     public function __set($key, $value)
     {
         $this->setAttribute($key, $value);
     }
 
+    /**
+     * @param $key
+     * @param $value
+     * @return mixed
+     */
     public function setAttribute($key, $value)
     {
         if ($this->hasSetMutator($key)) {
@@ -43,11 +68,19 @@ class Model implements Arrayable, Jsonable
         $this->attributes[$key] = $value;
     }
 
+    /**
+     * @param $key
+     * @return bool
+     */
     public function hasSetMutator($key)
     {
         return method_exists($this, 'set'.Str::studly($key).'Attribute');
     }
 
+    /**
+     * @param $key
+     * @return bool
+     */
     protected function isJsonCastable($key)
     {
         if ($this->hasCast($key)) {
@@ -59,6 +92,9 @@ class Model implements Arrayable, Jsonable
         return false;
     }
 
+    /**
+     * @param array $attributes
+     */
     protected function setAttributes(array $attributes)
     {
         foreach ($attributes as $key => $value) {
@@ -69,34 +105,54 @@ class Model implements Arrayable, Jsonable
         }
     }
 
+    /**
+     * @param array $attributes
+     */
     protected function setOriginals(array $attributes)
     {
         $this->originals = $attributes;
     }
 
     /**
-     * GETTER.
+     * @param $key
+     * @return bool|Carbon|mixed|static
      */
     public function __get($key)
     {
         return $this->getAttribute($key);
     }
 
+    /**
+     * @return array
+     */
     public function getOriginals()
     {
         return $this->originals;
     }
 
+    /**
+     * @param $key
+     * @param null $default
+     * @return mixed
+     */
     public function getOriginal($key, $default = null)
     {
         return array_get($this->originals, $key, $default);
     }
 
+    /**
+     * @return array
+     */
     public function getAttributes()
     {
         return $this->attributes;
     }
 
+    /**
+     * @param $key
+     * @param null $default
+     * @return bool|Carbon|mixed|static
+     */
     public function getAttribute($key, $default = null)
     {
         if (array_get($this->attributes, $key) != null || $this->hasGetMutator($key)) {
@@ -104,6 +160,11 @@ class Model implements Arrayable, Jsonable
         }
     }
 
+    /**
+     * @param $key
+     * @param null $default
+     * @return bool|Carbon|mixed|static
+     */
     public function getAttributeValue($key, $default = null)
     {
         $value = $this->getAttributeFromArray($key, $default);
@@ -123,26 +184,49 @@ class Model implements Arrayable, Jsonable
         return $value;
     }
 
+    /**
+     * @param $key
+     * @param null $default
+     * @return mixed
+     */
     protected function getAttributeFromArray($key, $default = null)
     {
         return array_get($this->attributes, $key, $default);
     }
 
+    /**
+     * @param $key
+     * @return bool
+     */
     protected function hasGetMutator($key)
     {
         return method_exists($this, 'get'.Str::studly($key).'Attribute');
     }
 
+    /**
+     * @param $key
+     * @param $value
+     * @return mixed
+     */
     protected function mutateAttribute($key, $value)
     {
         return $this->{'get'.Str::studly($key).'Attribute'}($value);
     }
 
+    /**
+     * @param $key
+     * @return bool
+     */
     protected function hasCast($key)
     {
         return array_key_exists($key, $this->casts);
     }
 
+    /**
+     * @param $key
+     * @param $value
+     * @return bool|mixed
+     */
     protected function castAttribute($key, $value)
     {
         if (is_null($value)) {
@@ -172,11 +256,19 @@ class Model implements Arrayable, Jsonable
         }
     }
 
+    /**
+     * @param $key
+     * @return string
+     */
     protected function getCastType($key)
     {
         return trim(strtolower($this->casts[$key]));
     }
 
+    /**
+     * @param $value
+     * @return Carbon
+     */
     protected function asDateTime($value)
     {
         if ($value instanceof Carbon) {
@@ -199,29 +291,35 @@ class Model implements Arrayable, Jsonable
     }
 
     /**
-     * HELPERS.
+     * @param array $array
+     * @return array
      */
     protected function slugArrayKeys(array $array)
     {
         $tmp = [];
         foreach ($array as $key => $value) {
             if (is_array($value)) {
-                $tmp[Str::slug($key, '_')] = $this->slugArrayKeys($value);
-            } else {
-                $tmp[Str::slug($key, '_')] = $value;
+                $value = $this->slugArrayKeys($value);
             }
+            $tmp[Str::slug($key, '_')] = $value;
         }
-
         return $tmp;
     }
 
+    /**
+     * @return array
+     */
     public function toArray()
     {
         return json_decode($this->toJson(), true);
     }
 
+    /**
+     * @param int $options
+     * @return string
+     */
     public function toJson($options = 0)
     {
-        return json_encode(array_diff_key($this->attributes, array_flip($this->hidden)));
+        return json_encode(array_diff_key($this->attributes, array_flip($this->hidden)), $options);
     }
 }
