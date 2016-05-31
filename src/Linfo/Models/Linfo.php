@@ -5,8 +5,7 @@ namespace Linfo\Laravel\Models;
 use Linfo\Laravel\Traits\LinfoProcessedTrait;
 
 /**
- * Class Linfo
- * @package Linfo\Laravel\Models
+ * Class Linfo.
  */
 class Linfo extends Model
 {

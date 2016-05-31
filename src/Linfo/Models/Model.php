@@ -9,8 +9,7 @@ use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Str;
 
 /**
- * Class Model
- * @package Linfo\Laravel\Models
+ * Class Model.
  */
 class Model implements Arrayable, Jsonable
 {
@@ -303,6 +302,7 @@ class Model implements Arrayable, Jsonable
             }
             $tmp[Str::slug($key, '_')] = $value;
         }
+
         return $tmp;
     }
 

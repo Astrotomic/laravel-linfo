@@ -138,7 +138,7 @@ trait LinfoProcessedTrait
     protected function division($dividend, $divisor)
     {
         if ($divisor == 0) {
-            return null;
+            return;
         }
 
         return $dividend / $divisor;
