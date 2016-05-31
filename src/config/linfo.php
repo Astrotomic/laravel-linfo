@@ -1,4 +1,5 @@
 <?php
+
 return [
     // original linfo package
     'source' => [
@@ -98,4 +99,3 @@ return [
         'sudo_apps' => [],
     ],
 ];
-

@@ -1,4 +1,5 @@
 <?php
+
 namespace Linfo\Laravel\Models;
 
 use Linfo\Laravel\Traits\LinfoProcessedTrait;

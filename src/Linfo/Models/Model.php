@@ -1,4 +1,5 @@
 <?php
+
 namespace Linfo\Laravel\Models;
 
 use DateTime;
@@ -18,7 +19,7 @@ class Model implements Arrayable, Jsonable
     protected $casts = [];
 
     /**
-     * SETTER
+     * SETTER.
      */
     public function __set($key, $value)
     {
@@ -28,13 +29,14 @@ class Model implements Arrayable, Jsonable
     public function setAttribute($key, $value)
     {
         if ($this->hasSetMutator($key)) {
-            $method = 'set' . Str::studly($key) . 'Attribute';
+            $method = 'set'.Str::studly($key).'Attribute';
+
             return $this->{$method}($value);
         } elseif (in_array($key, $this->dates) && $value) {
             $value = $this->asDateTime($value);
         }
 
-        if ($this->isJsonCastable($key) && !is_null($value)) {
+        if ($this->isJsonCastable($key) && ! is_null($value)) {
             $value = json_encode($value);
         }
 
@@ -43,7 +45,7 @@ class Model implements Arrayable, Jsonable
 
     public function hasSetMutator($key)
     {
-        return method_exists($this, 'set' . Str::studly($key) . 'Attribute');
+        return method_exists($this, 'set'.Str::studly($key).'Attribute');
     }
 
     protected function isJsonCastable($key)
@@ -73,7 +75,7 @@ class Model implements Arrayable, Jsonable
     }
 
     /**
-     * GETTER
+     * GETTER.
      */
     public function __get($key)
     {
@@ -113,7 +115,7 @@ class Model implements Arrayable, Jsonable
         if ($this->hasCast($key)) {
             $value = $this->castAttribute($key, $value);
         } elseif (in_array($key, $this->dates)) {
-            if (!is_null($value)) {
+            if (! is_null($value)) {
                 return $this->asDateTime($value);
             }
         }
@@ -128,12 +130,12 @@ class Model implements Arrayable, Jsonable
 
     protected function hasGetMutator($key)
     {
-        return method_exists($this, 'get' . Str::studly($key) . 'Attribute');
+        return method_exists($this, 'get'.Str::studly($key).'Attribute');
     }
 
     protected function mutateAttribute($key, $value)
     {
-        return $this->{'get' . Str::studly($key) . 'Attribute'}($value);
+        return $this->{'get'.Str::studly($key).'Attribute'}($value);
     }
 
     protected function hasCast($key)
@@ -150,16 +152,16 @@ class Model implements Arrayable, Jsonable
         switch ($this->getCastType($key)) {
             case 'int':
             case 'integer':
-                return (int)$value;
+                return (int) $value;
             case 'real':
             case 'float':
             case 'double':
-                return (float)$value;
+                return (float) $value;
             case 'string':
-                return (string)$value;
+                return (string) $value;
             case 'bool':
             case 'boolean':
-                return (bool)$value;
+                return (bool) $value;
             case 'object':
                 return json_decode($value);
             case 'array':
@@ -197,7 +199,7 @@ class Model implements Arrayable, Jsonable
     }
 
     /**
-     * HELPERS
+     * HELPERS.
      */
     protected function slugArrayKeys(array $array)
     {
@@ -209,6 +211,7 @@ class Model implements Arrayable, Jsonable
                 $tmp[Str::slug($key, '_')] = $value;
             }
         }
+
         return $tmp;
     }
 
