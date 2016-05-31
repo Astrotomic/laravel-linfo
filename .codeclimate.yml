@@ -12,6 +12,8 @@ engines:
     checks:
       CleanCode/StaticAccess:
         enabled: false
+      Design/WeightedMethodCount:
+        enabled: false
 ratings:
   paths:
     - "src/Linfo/**.php"
