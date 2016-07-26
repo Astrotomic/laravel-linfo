@@ -1,4 +1,5 @@
 <?php
+
 namespace Linfo\Laravel\Traits;
 
 use Illuminate\Support\Str;
@@ -10,14 +11,14 @@ trait LinfoProcessedTrait
     // Processed Setter
     public function setBootedAtProcessed()
     {
-        if(!empty(array_get($this->attributes, 'uptime.bootedtimestamp'))) {
+        if (! empty(array_get($this->attributes, 'uptime.bootedtimestamp'))) {
             return $this->asDateTime(array_get($this->attributes, 'uptime.bootedtimestamp'))->setTimezone('UTC');
         }
     }
 
     public function setCreatedAtProcessed()
     {
-        if(!empty(array_get($this->attributes, 'timestamp'))) {
+        if (! empty(array_get($this->attributes, 'timestamp'))) {
             return $this->asDateTime(array_get($this->attributes, 'timestamp'))->setTimezone('UTC');
         }
     }
@@ -35,26 +36,27 @@ trait LinfoProcessedTrait
     public function setCpuProcessed()
     {
         $cpu = [];
-        if(!empty(array_get($this->attributes, 'cpu'))) {
+        if (! empty(array_get($this->attributes, 'cpu'))) {
             $orgCPU = array_get($this->attributes, 'cpu');
-            $usage_percentage = array_column($orgCPU, 'usage_percentage');
+            $usagePercentage = array_column($orgCPU, 'usage_percentage');
             $cpu['vendor'] = $orgCPU[0]['vendor'];
             $cpu['model'] = str_ireplace('(R)', '&reg;', preg_replace('/[\s]{2,}/', ' ', $orgCPU[0]['model']));
             $cpu['mhz'] = $orgCPU[0]['mhz'] * 1;
             $cpu['ghz'] = $this->division($cpu['mhz'], 1000);
             $cpu['cores'] = count($orgCPU);
-            $cpu['usage_percentage'] = ceil($this->division(array_sum($usage_percentage), count($usage_percentage))) ?: 1;
+            $cpu['usage_percentage'] = ceil($this->division(array_sum($usagePercentage), count($usagePercentage))) ?: 1;
         }
-        if(!empty(array_get($this->attributes, 'cpuarchitecture'))) {
+        if (! empty(array_get($this->attributes, 'cpuarchitecture'))) {
             $cpu['architecture'] = array_get($this->attributes, 'cpuarchitecture');
         }
+
         return $cpu;
     }
 
     public function setRamProcessed()
     {
         $ram = [];
-        if(!empty(array_get($this->attributes, 'ram'))) {
+        if (! empty(array_get($this->attributes, 'ram'))) {
             $orgRAM = array_get($this->attributes, 'ram');
             $ram['type'] = strtolower(array_get($orgRAM, 'type'));
             $ram['total'] = array_get($orgRAM, 'total', 0);
@@ -65,13 +67,14 @@ trait LinfoProcessedTrait
             $ram['blocked_gb'] = $this->b2Gb($ram['blocked']);
             $ram['usage_percentage'] = $this->division($ram['blocked'], $ram['total']) * 100;
         }
+
         return $ram;
     }
 
     public function setSwapProcessed()
     {
         $swap = [];
-        if(!empty(array_get($this->attributes, 'ram'))) {
+        if (! empty(array_get($this->attributes, 'ram'))) {
             $orgRAM = array_get($this->attributes, 'ram');
             $swap['total'] = array_get($orgRAM, 'swaptotal', 0);
             $swap['total_gb'] = $this->b2Gb($swap['total']);
@@ -83,23 +86,25 @@ trait LinfoProcessedTrait
             $swap['cached_gb'] = $this->b2Gb($swap['cached']);
             $swap['usage_percentage'] = $this->division($swap['blocked'], $swap['total']) * 100;
         }
+
         return $swap;
     }
 
     public function setOsProcessed()
     {
-        $os = [];
-        if(!empty(array_get($this->attributes, 'os'))) {
-            $os['type'] = $this->attributes['os'];
+        $operatingSystem = [];
+        if (! empty(array_get($this->attributes, 'os'))) {
+            $operatingSystem['type'] = $this->attributes['os'];
         }
-        if(!empty(array_get($this->attributes, 'kernel'))) {
-            $os['kernel'] = $this->attributes['kernel'];
+        if (! empty(array_get($this->attributes, 'kernel'))) {
+            $operatingSystem['kernel'] = $this->attributes['kernel'];
         }
-        if(!empty(array_get($this->attributes, 'distro'))) {
-            $os['name'] = $this->attributes['distro']['name'];
-            $os['version'] = $this->attributes['distro']['version'];
+        if (! empty(array_get($this->attributes, 'distro'))) {
+            $operatingSystem['name'] = $this->attributes['distro']['name'];
+            $operatingSystem['version'] = $this->attributes['distro']['version'];
         }
-        return $os;
+
+        return $operatingSystem;
     }
 
     // Processed Helper
@@ -130,9 +135,12 @@ trait LinfoProcessedTrait
         return $byte / 1024 / 1024 / 1024;
     }
 
-    protected function division($a, $b) {
-        if($b == 0) return null;
+    protected function division($dividend, $divisor)
+    {
+        if ($divisor == 0) {
+            return;
+        }
 
-        return $a / $b;
+        return $dividend / $divisor;
     }
 }

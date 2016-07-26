@@ -2,7 +2,6 @@
   "name": "linfo/laravel",
   "description": "This is a Laravel 5 Wrapper for the linfo package from jrgp",
   "keywords": ["laravel","health","system","load"],
-  "homepage": "http://linfo.gummibeer.de",
   "require": {
     "php": ">=5.5.0",
     "illuminate/support": "5.*",
@@ -29,7 +28,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Linfo\\Laravel\\": "src"
+      "Linfo\\Laravel\\": "src/Linfo"
     }
   }
 }
