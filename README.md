@@ -16,20 +16,43 @@ This is a Laravel 5 Wrapper for the linfo package from jrgp - https://github.com
 
 ## Installation
 
+Open `composer.json` and add this line below.
+
 ```json
 {
     "require": {
-        "linfo/laravel": "dev-master"
+        "linfo/laravel": "~1.1"
     }
 }
 ```
 
-or run `composer require linfo\laravel`
+Or you can run this command from your project directory.
+
+```sh
+composer require linfo/laravel
+```
+
+## Configuration
+
+Open the `config/app.php` and add this line in `providers` section.
 
 ```php
 Linfo\Laravel\LinfoServiceProvider::class,
 ```
 
+Publish config file `linfo.php` by running this command.
+
+```sh
+php artisan vendor:publish --provider="Linfo\Laravel\LinfoServiceProvider"
+```
+
+## Usage
+
+You can use the function like this.
+
 ```php
-new \Linfo\Laravel\Models\Linfo()
+use Linfo\Laravel\Models\Linfo();
+
+$linfo = new Linfo();
+
 ```
