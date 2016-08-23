@@ -28,7 +28,7 @@ Open `composer.json` and add this line below.
 
 Or you can run this command from your project directory.
 
-```sh
+```console
 composer require linfo/laravel
 ```
 
@@ -42,7 +42,7 @@ Linfo\Laravel\LinfoServiceProvider::class,
 
 Publish config file `linfo.php` by running this command.
 
-```sh
+```console
 php artisan vendor:publish --provider="Linfo\Laravel\LinfoServiceProvider"
 ```
 
@@ -55,4 +55,13 @@ use Linfo\Laravel\Models\Linfo();
 
 $linfo = new Linfo();
 
+$os = $linfo->os; // string
+$kernel = $linfo->kernel; // string
+$model = $linfo->model; // string
+$ram = $linfo->ram; // array
+$cpu = $linfo->cpu; // array
+$arc = $linfo->cpuarchitecture; // string
+
 ```
+
+You can see other data using `dump($linfo)` or `var_dump($linfo)`.
