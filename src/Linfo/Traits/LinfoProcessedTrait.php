@@ -30,7 +30,7 @@ trait LinfoProcessedTrait
 
     public function setWebServerProcessed()
     {
-        return $_SERVER['SERVER_SOFTWARE'];
+        return (!empty($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : '');
     }
 
     public function setCpuProcessed()
