@@ -13,16 +13,13 @@ addons:
     code_climate:
         repo_token: ${CC_TOKEN}
 
-## List all OS to test with
-os:
-  - linux
-  - osx
-
 ## List all PHP versions to test with
 php:
   - 5.5
   - 5.6
   - 7.0
+  - hhvm
+  - nightly
 
 ## Define all ENV vars to test with
 env:
