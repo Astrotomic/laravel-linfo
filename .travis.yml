@@ -10,16 +10,14 @@ cache:
 
 ## Addons used by this package
 addons:
-    code_climate:
-        repo_token: ${CC_TOKEN}
+  code_climate:
+    repo_token: ${CC_TOKEN}
 
 ## List all PHP versions to test with
 php:
   - 5.5
   - 5.6
   - 7.0
-  - hhvm
-  - nightly
 
 ## Define all ENV vars to test with
 env:
