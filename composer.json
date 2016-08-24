@@ -12,7 +12,8 @@
     "laravel/framework": "~5.0",
     "phpunit/phpunit": "~4.0",
     "laracasts/testdummy": "~2.0",
-    "orchestra/testbench": "~3.0"
+    "orchestra/testbench": "~3.0",
+    "codeclimate/php-test-reporter": "^0.3.2"
   },
   "provide": {
     "linfo/linfo": "~3.0"
