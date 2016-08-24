@@ -2,6 +2,7 @@
 
 namespace Linfo\Laravel\Models;
 
+use Linfo\Linfo as LinfoBase;
 use Linfo\Laravel\Traits\LinfoProcessedTrait;
 
 /**
@@ -25,7 +26,7 @@ class Linfo extends Model
      */
     public function __construct()
     {
-        $linfo = new \Linfo(config('linfo.source'));
+        $linfo = new LinfoBase(config('linfo.source'));
         $linfo->scan();
         $this->setup($linfo->getInfo());
     }

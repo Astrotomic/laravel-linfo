@@ -4,12 +4,18 @@
   "keywords": ["laravel","health","system","load"],
   "require": {
     "php": ">=5.5.0",
-    "illuminate/support": "5.*",
+    "illuminate/support": "~5.0",
     "nesbot/carbon": "~1.19",
-    "linfo/linfo": "~2.0.3"
+    "linfo/linfo": "dev-master"
+  },
+  "require-dev": {
+    "laravel/framework": "~5.0",
+    "phpunit/phpunit": "~4.0",
+    "laracasts/testdummy": "~2.0",
+    "orchestra/testbench": "~3.0"
   },
   "provide": {
-    "linfo/linfo": "~2.0.3"
+    "linfo/linfo": "~3.0"
   },
   "license": "GPL-3.0",
   "authors": [
@@ -22,7 +28,6 @@
   ],
   "support": {
     "email": "dev.gummibeer@gmail.com",
-    "docs": "http://linfo.gummibeer.de",
     "issues": "https://github.com/Gummibeer/laravel-linfo/issues",
     "source": "https://github.com/Gummibeer/laravel-linfo"
   },
@@ -30,5 +35,11 @@
     "psr-4": {
       "Linfo\\Laravel\\": "src/Linfo"
     }
-  }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/TestCase.php"
+    ]
+  },
+  "minimum-stability": "stable"
 }
