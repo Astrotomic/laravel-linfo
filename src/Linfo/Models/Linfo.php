@@ -2,6 +2,7 @@
 
 namespace Linfo\Laravel\Models;
 
+use Linfo\Exceptions\FatalException;
 use Linfo\Linfo as LinfoBase;
 use Linfo\Laravel\Traits\LinfoProcessedTrait;
 
@@ -22,7 +23,7 @@ class Linfo extends Model
     /**
      * Linfo constructor.
      *
-     * @throws \LinfoFatalException
+     * @throws FatalException
      */
     public function __construct()
     {
