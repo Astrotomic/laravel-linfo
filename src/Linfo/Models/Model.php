@@ -4,9 +4,9 @@ namespace Linfo\Laravel\Models;
 
 use DateTime;
 use Carbon\Carbon;
-use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Str;
+use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Contracts\Support\Arrayable;
 
 /**
  * Class Model.
