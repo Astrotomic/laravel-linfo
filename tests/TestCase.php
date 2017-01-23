@@ -1,8 +1,8 @@
 <?php
 
-use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Linfo\Laravel\LinfoServiceProvider;
 use Linfo\Laravel\Models\Linfo as LinfoModel;
+use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
 {

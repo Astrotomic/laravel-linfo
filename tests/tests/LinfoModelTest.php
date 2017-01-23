@@ -1,7 +1,7 @@
 <?php
 
-use Linfo\Laravel\Models\Linfo as LinfoModel;
 use Carbon\Carbon;
+use Linfo\Laravel\Models\Linfo as LinfoModel;
 
 class LinfoModelTest extends TestCase
 {
