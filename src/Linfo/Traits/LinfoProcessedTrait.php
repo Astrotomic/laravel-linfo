@@ -39,10 +39,10 @@ trait LinfoProcessedTrait
         if (! empty(array_get($this->attributes, 'cpu'))) {
             $orgCPU = array_get($this->attributes, 'cpu');
             $usagePercentage = array_column($orgCPU, 'usage_percentage');
-            $cpu['vendor'] = $orgCPU[0]['vendor'];
+            $cpu['vendor'] = (!empty($orgCPU[0]['vendor']) ? $orgCPU[0]['vendor'] : null);
             $cpu['model'] = str_ireplace('(R)', '&reg;', preg_replace('/[\s]{2,}/', ' ', $orgCPU[0]['model']));
-            $cpu['mhz'] = $orgCPU[0]['mhz'] * 1;
-            $cpu['ghz'] = $this->division($cpu['mhz'], 1000);
+            $cpu['mhz'] = (!empty($orgCPU[0]['mhz']) ? $orgCPU[0]['mhz'] * 1 : null);
+            $cpu['ghz'] = (!empty($cpu['mhz']) ? $this->division($cpu['mhz'], 1000) : null);
             $cpu['cores'] = count($orgCPU);
             $cpu['usage_percentage'] = ceil($this->division(array_sum($usagePercentage), count($usagePercentage))) ?: 1;
         }
