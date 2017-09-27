@@ -4,6 +4,7 @@
 [![GitHub release](https://img.shields.io/github/release/astrotomic/laravel-linfo.svg?style=flat-square)](https://github.com/Astrotomic/laravel-linfo/releases)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/Astrotomic/laravel-linfo/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/Astrotomic/laravel-linfo.svg?style=flat-square)](https://github.com/Astrotomic/laravel-linfo/issues)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FAstrotomic%2Flaravel-linfo.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FAstrotomic%2Flaravel-linfo?ref=badge_shield)
 
 [![Travis branch](https://img.shields.io/travis/Astrotomic/laravel-linfo/master.svg?style=flat-square)](https://travis-ci.org/Astrotomic/laravel-linfo/branches)
 [![StyleCI](https://styleci.io/repos/42302702/shield)](https://styleci.io/repos/42302702)
@@ -64,3 +65,6 @@ $arc = $linfo->cpuarchitecture; // string
 ```
 
 You can see other data using `dump($linfo)` or `var_dump($linfo)`.
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FAstrotomic%2Flaravel-linfo.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FAstrotomic%2Flaravel-linfo?ref=badge_large)
