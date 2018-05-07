@@ -6,7 +6,7 @@
     "php": ">=5.5.0",
     "illuminate/support": "~5.0",
     "nesbot/carbon": "~1.19",
-    "linfo/linfo": "^3.0"
+    "linfo/linfo": "~4.0"
   },
   "require-dev": {
     "laravel/framework": "~5.0",
@@ -16,14 +16,14 @@
     "codeclimate/php-test-reporter": "^0.3.2"
   },
   "provide": {
-    "linfo/linfo": "~3.0"
+    "linfo/linfo": "~4.0"
   },
   "license": "GPL-3.0",
   "authors": [
     {
       "name": "Tom Witkowski",
       "email": "dev.gummibeer@gmail.com",
-      "homepage": "https://github.com/Gummibeer",
+      "homepage": "https://gummibeer.de",
       "role": "Developer"
     }
   ],
