@@ -2,9 +2,9 @@
 
 namespace Linfo\Laravel\Models;
 
-use Linfo\Linfo as LinfoBase;
 use Linfo\Exceptions\FatalException;
 use Linfo\Laravel\Traits\LinfoProcessedTrait;
+use Linfo\Linfo as LinfoBase;
 
 /**
  * Class Linfo.

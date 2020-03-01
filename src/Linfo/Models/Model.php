@@ -2,11 +2,11 @@
 
 namespace Linfo\Laravel\Models;
 
-use DateTime;
 use Carbon\Carbon;
-use Illuminate\Support\Str;
-use Illuminate\Contracts\Support\Jsonable;
+use DateTime;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Support\Str;
 
 /**
  * Class Model.
