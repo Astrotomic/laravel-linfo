@@ -1,23 +1,12 @@
 {
   "name": "linfo/laravel",
   "description": "This is a Laravel 5 Wrapper for the linfo package from jrgp",
-  "keywords": ["laravel","health","system","load"],
-  "require": {
-    "php": ">=5.5.0",
-    "illuminate/support": "~5.0",
-    "nesbot/carbon": "~1.19",
-    "linfo/linfo": "~4.0"
-  },
-  "require-dev": {
-    "laravel/framework": "~5.0",
-    "phpunit/phpunit": "~4.0",
-    "laracasts/testdummy": "~2.0",
-    "orchestra/testbench": "~3.0",
-    "codeclimate/php-test-reporter": "^0.3.2"
-  },
-  "provide": {
-    "linfo/linfo": "~4.0"
-  },
+  "keywords": [
+    "laravel",
+    "health",
+    "system",
+    "load"
+  ],
   "license": "MIT",
   "authors": [
     {
@@ -27,10 +16,28 @@
       "role": "Developer"
     }
   ],
-  "support": {
-    "email": "dev.gummibeer@gmail.com",
-    "issues": "https://github.com/Gummibeer/laravel-linfo/issues",
-    "source": "https://github.com/Gummibeer/laravel-linfo"
+  "require": {
+    "php": ">=5.5.0",
+    "illuminate/support": "~5.0",
+    "linfo/linfo": "~4.0",
+    "nesbot/carbon": "~1.19"
+  },
+  "provide": {
+    "linfo/linfo": "~4.0"
+  },
+  "require-dev": {
+    "codeclimate/php-test-reporter": "^0.3.2",
+    "laracasts/testdummy": "~2.0",
+    "laravel/framework": "~5.0",
+    "orchestra/testbench": "~3.0",
+    "phpunit/phpunit": "~4.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Linfo\\Laravel\\LinfoServiceProvider"
+      ]
+    }
   },
   "autoload": {
     "psr-4": {
@@ -43,11 +50,9 @@
     ]
   },
   "minimum-stability": "stable",
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Linfo\\Laravel\\LinfoServiceProvider"
-      ]
-    }
+  "support": {
+    "email": "dev.gummibeer@gmail.com",
+    "issues": "https://github.com/Gummibeer/laravel-linfo/issues",
+    "source": "https://github.com/Gummibeer/laravel-linfo"
   }
 }
