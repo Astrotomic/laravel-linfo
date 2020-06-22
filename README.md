@@ -1,3 +1,5 @@
+
+
 # Laravel Linfo
 
 [![GitHub Author](https://img.shields.io/badge/author-@astrotomic-orange.svg?style=flat-square)](https://github.com/Astrotomic)
@@ -63,9 +65,7 @@ $arc = $linfo->cpuarchitecture; // string
 
 ```
 
-You can see other data using `dump($linfo)` or `var_dump($linfo)`
-
-## Treeware
+You can see other data using `dump($linfo)` or `var_dump($linfo)`## Treeware
 
 You're free to use this package, but if it makes it to your production environment I would highly appreciate you buying the world a tree.
 
