@@ -19,9 +19,9 @@ Open `composer.json` and add this line below.
 
 ```json
 {
-    "require": {
-        "linfo/laravel": "~1.1"
-    }
+  "require": {
+    "linfo/laravel": "~1.1"
+  }
 }
 ```
 
