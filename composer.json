@@ -27,7 +27,7 @@
     "linfo/linfo": "~4.0"
   },
   "require-dev": {
-    "codeclimate/php-test-reporter": "^0.3.2",
+    "codeclimate/php-test-reporter": "^0.4.4",
     "laracasts/testdummy": "~2.0",
     "laravel/framework": "~5.0",
     "orchestra/testbench": "~3.0",
