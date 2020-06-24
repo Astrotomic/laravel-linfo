@@ -31,7 +31,7 @@
     "laracasts/testdummy": "~2.0",
     "laravel/framework": "~5.0",
     "orchestra/testbench": "~3.0",
-    "phpunit/phpunit": "~4.0"
+    "phpunit/phpunit": "~7.5"
   },
   "extra": {
     "laravel": {
