@@ -2,8 +2,8 @@
 
 namespace Linfo\Laravel\Tests;
 
-use Linfo\Laravel\LinfoServiceProvider;
 use Linfo\Laravel\Linfo;
+use Linfo\Laravel\LinfoServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase

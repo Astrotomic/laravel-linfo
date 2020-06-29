@@ -26,7 +26,7 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
     {
         $linfo = new LinfoBase(config('linfo.source'));
         $linfo->scan();
-        foreach($this->normalizeArrayKeys($linfo->getInfo()) as $key => $value) {
+        foreach ($this->normalizeArrayKeys($linfo->getInfo()) as $key => $value) {
             $this->setAttribute($key, $value);
         }
         $this->syncOriginal();
@@ -80,7 +80,6 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
 
     public function getRelationValue($key)
     {
-        return null;
     }
 
     public function getDateFormat()
