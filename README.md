@@ -47,6 +47,7 @@ You can see other data using `dump($linfo)` or `var_dump($linfo)`
 ```bash
 composer test
 ```
+
 ## Contributing
 
 Please see [CONTRIBUTING](https://github.com/Astrotomic/.github/blob/master/CONTRIBUTING.md) for details. You could also be interested in [CODE OF CONDUCT](https://github.com/Astrotomic/.github/blob/master/CODE_OF_CONDUCT.md).
