@@ -23,11 +23,11 @@
     "illuminate/contracts": "^7.0",
     "illuminate/database": "^7.0",
     "illuminate/support": "^7.0",
-    "linfo/linfo": "^4.0",
+    "linfo/linfo": "^4.0.2",
     "nesbot/carbon": "^2.0"
   },
   "provide": {
-    "linfo/linfo": "^4.0"
+    "linfo/linfo": "^4.0.2"
   },
   "require-dev": {
     "orchestra/testbench": "^5.0",
