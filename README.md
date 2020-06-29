@@ -1,42 +1,19 @@
 # Laravel Linfo
 
-[![GitHub Author](https://img.shields.io/badge/author-@astrotomic-orange.svg?style=flat-square)](https://github.com/Astrotomic)
-[![GitHub release](https://img.shields.io/github/release/astrotomic/laravel-linfo.svg?style=flat-square)](https://github.com/Astrotomic/laravel-linfo/releases)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/Astrotomic/laravel-linfo/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/Astrotomic/laravel-linfo.svg?style=flat-square)](https://github.com/Astrotomic/laravel-linfo/issues)
+[![Latest Version](http://img.shields.io/packagist/v/linfo/laravel.svg?label=Release&style=for-the-badge)](https://packagist.org/packages/linfo/laravel)
+[![MIT License](https://img.shields.io/github/license/Astrotomic/laravel-linfo.svg?label=License&color=blue&style=for-the-badge)](https://github.com/Astrotomic/laravel-linfo/blob/master/LICENSE.md)
+[![Offset Earth](https://img.shields.io/badge/Treeware-%F0%9F%8C%B3-green?style=for-the-badge)](https://plant.treeware.earth/Astrotomic/laravel-linfo)
 
-[![Travis branch](https://img.shields.io/travis/Astrotomic/laravel-linfo/master.svg?style=flat-square)](https://travis-ci.org/Astrotomic/laravel-linfo/branches)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Astrotomic/laravel-linfo/run-tests?style=flat-square&logoColor=white&logo=github&label=Tests)](https://github.com/Astrotomic/laravel-linfo/actions?query=workflow%3Arun-tests)
 [![StyleCI](https://styleci.io/repos/42302702/shield)](https://styleci.io/repos/42302702)
-[![Code Climate](https://img.shields.io/codeclimate/github/Astrotomic/laravel-linfo.svg?style=flat-square)](https://codeclimate.com/github/Astrotomic/laravel-linfo)
-[![Code Climate](https://img.shields.io/codeclimate/coverage/github/Astrotomic/laravel-linfo.svg?style=flat-square)](https://codeclimate.com/github/Astrotomic/laravel-linfo/coverage)
-[![Code Climate](https://img.shields.io/codeclimate/issues/github/Astrotomic/laravel-linfo.svg?style=flat-square)](https://codeclimate.com/github/Astrotomic/laravel-linfo/issues)
+[![Total Downloads](https://img.shields.io/packagist/dt/linfo/laravel.svg?label=Downloads&style=flat-square)](https://packagist.org/packages/linfo/laravel)
 
 This is a Laravel 5 Wrapper for the linfo package from jrgp - https://github.com/jrgp/linfo
 
 ## Installation
 
-Open `composer.json` and add this line below.
-
-```json
-{
-  "require": {
-    "linfo/laravel": "~1.1"
-  }
-}
-```
-
-Or you can run this command from your project directory.
-
 ```console
 composer require linfo/laravel
-```
-
-## Configuration
-
-Open the `config/app.php` and add this line in `providers` section.
-
-```php
-Linfo\Laravel\LinfoServiceProvider::class,
 ```
 
 Publish config file `linfo.php` by running this command.
@@ -50,7 +27,7 @@ php artisan vendor:publish --provider="Linfo\Laravel\LinfoServiceProvider"
 You can use the function like this.
 
 ```php
-use Linfo\Laravel\Models\Linfo();
+use Linfo\Laravel\Linfo();
 
 $linfo = new Linfo();
 
@@ -64,6 +41,28 @@ $arc = $linfo->cpuarchitecture; // string
 ```
 
 You can see other data using `dump($linfo)` or `var_dump($linfo)`
+
+## Testing
+
+```bash
+composer test
+```
+## Contributing
+
+Please see [CONTRIBUTING](https://github.com/Astrotomic/.github/blob/master/CONTRIBUTING.md) for details. You could also be interested in [CODE OF CONDUCT](https://github.com/Astrotomic/.github/blob/master/CODE_OF_CONDUCT.md).
+
+### Security
+
+If you discover any security related issues, please check [SECURITY](https://github.com/Astrotomic/.github/blob/master/SECURITY.md) for steps to report it.
+
+## Credits
+
+-   [Tom Witkowski](https://github.com/Gummibeer)
+-   [All Contributors](../../contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
 ## Treeware
 

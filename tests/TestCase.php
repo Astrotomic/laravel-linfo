@@ -1,7 +1,9 @@
 <?php
 
+namespace Linfo\Laravel\Tests;
+
 use Linfo\Laravel\LinfoServiceProvider;
-use Linfo\Laravel\Models\Linfo as LinfoModel;
+use Linfo\Laravel\Linfo;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
@@ -30,6 +32,6 @@ abstract class TestCase extends OrchestraTestCase
 
     protected function getModelInstance()
     {
-        return new LinfoModel();
+        return new Linfo();
     }
 }

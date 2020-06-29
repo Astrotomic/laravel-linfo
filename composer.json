@@ -18,20 +18,23 @@
     }
   ],
   "require": {
-    "php": ">=5.5.0",
-    "illuminate/support": "~5.0",
-    "linfo/linfo": "~4.0",
-    "nesbot/carbon": "~1.19"
+    "php": "^7.2",
+    "ext-json": "*",
+    "illuminate/contracts": "^7.0",
+    "illuminate/database": "^7.0",
+    "illuminate/support": "^7.0",
+    "linfo/linfo": "^4.0",
+    "nesbot/carbon": "^2.0"
   },
   "provide": {
-    "linfo/linfo": "~4.0"
+    "linfo/linfo": "^4.0"
   },
   "require-dev": {
-    "codeclimate/php-test-reporter": "^0.3.2",
-    "laracasts/testdummy": "~2.0",
-    "laravel/framework": "~5.0",
-    "orchestra/testbench": "~3.0",
-    "phpunit/phpunit": "~4.0"
+    "orchestra/testbench": "^5.0",
+    "phpunit/phpunit": "^9.0"
+  },
+  "config": {
+    "sort-packages": true
   },
   "extra": {
     "laravel": {
@@ -42,15 +45,19 @@
   },
   "autoload": {
     "psr-4": {
-      "Linfo\\Laravel\\": "src/Linfo"
+      "Linfo\\Laravel\\": "src"
     }
   },
   "autoload-dev": {
-    "classmap": [
-      "tests/TestCase.php"
-    ]
+    "psr-4": {
+      "Linfo\\Laravel\\Tests\\": "tests"
+    }
   },
   "minimum-stability": "stable",
+  "prefer-stable": true,
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
   "support": {
     "email": "dev@astrotomic.info",
     "issues": "https://github.com/Astrotomic/laravel-linfo/issues",
