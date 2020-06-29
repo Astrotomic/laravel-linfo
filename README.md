@@ -27,7 +27,7 @@ php artisan vendor:publish --provider="Linfo\Laravel\LinfoServiceProvider"
 You can use the function like this.
 
 ```php
-use Linfo\Laravel\Linfo();
+use Linfo\Laravel\Linfo;
 
 $linfo = new Linfo();
 
