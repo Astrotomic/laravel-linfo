@@ -5,7 +5,7 @@ namespace Linfo\Laravel\Tests;
 use Carbon\Carbon;
 use Linfo\Laravel\Linfo;
 
-class LinfoModelTest extends TestCase
+final class LinfoModelTest extends TestCase
 {
     public function testInstanceOf()
     {
