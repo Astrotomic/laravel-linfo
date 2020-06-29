@@ -55,6 +55,6 @@ class Linfo extends Model
 
     public function setWebserviceAttribute(?string $value): void
     {
-        $this->attributes['webservice'] = $value ?: (!empty($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : null);
+        $this->attributes['webservice'] = $value ?: (! empty($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : null);
     }
 }
