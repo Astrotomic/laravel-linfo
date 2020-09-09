@@ -1,66 +1,66 @@
 {
-  "name": "linfo/laravel",
-  "description": "This is a Laravel 5 Wrapper for the linfo package from jrgp",
-  "keywords": [
-    "laravel",
-    "health",
-    "system",
-    "load"
-  ],
-  "homepage": "https://astrotomic.info",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Tom Witkowski",
-      "email": "gummibeer@astrotomic.info",
-      "homepage": "https://gummibeer.de",
-      "role": "Developer"
+    "name": "linfo/laravel",
+    "description": "This is a Laravel 5 Wrapper for the linfo package from jrgp",
+    "keywords": [
+        "laravel",
+        "health",
+        "system",
+        "load"
+    ],
+    "homepage": "https://astrotomic.info",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Witkowski",
+            "email": "gummibeer@astrotomic.info",
+            "homepage": "https://gummibeer.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "ext-json": "*",
+        "illuminate/contracts": "^7.0 || ^8.0",
+        "illuminate/database": "^7.0 || ^8.0",
+        "illuminate/support": "^7.0 || ^8.0",
+        "linfo/linfo": "^4.0.2",
+        "nesbot/carbon": "^2.0"
+    },
+    "provide": {
+        "linfo/linfo": "^4.0.2"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.0 || ^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Linfo\\Laravel\\LinfoServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Linfo\\Laravel\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Linfo\\Laravel\\Tests\\": "tests"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "support": {
+        "email": "dev@astrotomic.info",
+        "issues": "https://github.com/Astrotomic/laravel-linfo/issues",
+        "source": "https://github.com/Astrotomic/laravel-linfo"
     }
-  ],
-  "require": {
-    "php": "^7.3",
-    "ext-json": "*",
-    "illuminate/contracts": "^7.0|^8.0",
-    "illuminate/database": "^7.0|^8.0",
-    "illuminate/support": "^7.0|^8.0",
-    "linfo/linfo": "^4.0.2",
-    "nesbot/carbon": "^2.0"
-  },
-  "provide": {
-    "linfo/linfo": "^4.0.2"
-  },
-  "require-dev": {
-    "orchestra/testbench": "^5.0|^6.0",
-    "phpunit/phpunit": "^9.0"
-  },
-  "config": {
-    "sort-packages": true
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Linfo\\Laravel\\LinfoServiceProvider"
-      ]
-    }
-  },
-  "autoload": {
-    "psr-4": {
-      "Linfo\\Laravel\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Linfo\\Laravel\\Tests\\": "tests"
-    }
-  },
-  "minimum-stability": "stable",
-  "prefer-stable": true,
-  "scripts": {
-    "test": "vendor/bin/phpunit"
-  },
-  "support": {
-    "email": "dev@astrotomic.info",
-    "issues": "https://github.com/Astrotomic/laravel-linfo/issues",
-    "source": "https://github.com/Astrotomic/laravel-linfo"
-  }
 }
