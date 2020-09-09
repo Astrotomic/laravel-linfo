@@ -30,7 +30,7 @@
     "linfo/linfo": "^4.0.2"
   },
   "require-dev": {
-    "orchestra/testbench": "^5.0",
+    "orchestra/testbench": "^5.0|^6.0",
     "phpunit/phpunit": "^9.0"
   },
   "config": {
