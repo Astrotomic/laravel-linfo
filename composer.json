@@ -26,9 +26,6 @@
     "linfo/linfo": "^4.0.2",
     "nesbot/carbon": "^2.0"
   },
-  "provide": {
-    "linfo/linfo": "^4.0.2"
-  },
   "require-dev": {
     "orchestra/testbench": "^5.0|^6.0",
     "phpunit/phpunit": "^9.0"
