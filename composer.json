@@ -1,6 +1,6 @@
 {
     "name": "linfo/laravel",
-    "description": "This is a Laravel 5 Wrapper for the linfo package from jrgp",
+    "description": "This is a Laravel Wrapper for the linfo package from jrgp",
     "keywords": [
         "laravel",
         "health",
